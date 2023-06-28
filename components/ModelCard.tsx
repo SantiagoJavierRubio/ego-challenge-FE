@@ -23,8 +23,8 @@ export const ModelCard: FC<ModelCardProps> = ({
     >
       <h6
         className={`mb-2 truncate text-2xl font-semibold ${
-          isSelected ? 'text-red-600' : 'text-inherit'
-        }`}
+          isSelected ? 'text-red-500' : 'text-inherit'
+        } transition-all`}
       >
         {modelData.name}
       </h6>

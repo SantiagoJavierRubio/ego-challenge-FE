@@ -23,10 +23,12 @@ export const Models: FC<modelsProps> = ({ models }) => {
 
   const filterBySegment = (segment: ApiModelsResponse['segment']) => {
     setSelectedSegment(segment)
+    setSelectedModel(undefined)
     setFilter(...[models.filter(m => m.segment === segment)])
   }
   const resetFilters = () => {
     setSelectedSegment(undefined)
+    setSelectedModel(undefined)
     setFilter(models)
   }
   return (
@@ -45,7 +47,7 @@ export const Models: FC<modelsProps> = ({ models }) => {
           </button>
         ))}
       </div>
-      <div className="mt-16 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="mt-16 grid w-full grid-cols-1 gap-0 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
         {filtered.map(model => (
           <ModelCard
             key={model.id}
