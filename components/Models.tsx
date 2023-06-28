@@ -13,6 +13,13 @@ export const Models: FC<modelsProps> = ({ models }) => {
   const [selectedSegment, setSelectedSegment] = useState<
     ApiModelsResponse['segment'] | undefined
   >(undefined)
+  const [selectedModelId, setSelectedModel] = useState<number | undefined>(
+    undefined
+  )
+
+  const setSelectedModelId = (id: number) => {
+    if (id !== undefined && selectedModelId !== id) setSelectedModel(id)
+  }
 
   const filterBySegment = (segment: ApiModelsResponse['segment']) => {
     setSelectedSegment(segment)
@@ -40,7 +47,12 @@ export const Models: FC<modelsProps> = ({ models }) => {
       </div>
       <div className="mt-16 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {filtered.map(model => (
-          <ModelCard key={model.id} modelData={model} />
+          <ModelCard
+            key={model.id}
+            modelData={model}
+            selectedId={selectedModelId}
+            setSelected={setSelectedModelId}
+          />
         ))}
       </div>
     </div>
