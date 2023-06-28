@@ -38,9 +38,11 @@ export const Models: FC<modelsProps> = ({ models }) => {
           </button>
         ))}
       </div>
-      {filtered.map(model => (
-        <ModelCard key={model.id} modelData={model} />
-      ))}
+      <div className="mt-16 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {filtered.map(model => (
+          <ModelCard key={model.id} modelData={model} />
+        ))}
+      </div>
     </div>
   )
 }

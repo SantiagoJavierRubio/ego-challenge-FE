@@ -7,12 +7,14 @@ interface ModelCardProps {
 
 export const ModelCard: FC<ModelCardProps> = ({ modelData }) => {
   return (
-    <div>
-      <h6>{modelData.name}</h6>
-      <p>
+    <div className="flex aspect-square w-full flex-col items-center justify-start text-center">
+      <h6 className="mb-2 truncate text-2xl font-semibold">{modelData.name}</h6>
+      <p className="text-sm font-light">
         {modelData.year} | {modelData.price}
       </p>
-      <img src={modelData.thumbnail} alt={modelData.name} />
+      <div className="flex w-full grow flex-col items-center justify-center">
+        <img src={modelData.thumbnail} alt={modelData.name} width="300px" />
+      </div>
     </div>
   )
 }

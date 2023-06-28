@@ -14,12 +14,12 @@ export const Menu: FC<MenuProps> = ({}) => {
   return (
     <>
       <div
-        className={`fixed inset-y-0 right-0 h-full min-h-screen bg-white${
+        className={`fixed inset-y-0 right-0 h-full min-h-screen bg-white ${
           open ? 'w-1/5' : 'w-0'
         } transition-all`}
         id="menu-background"
       />
-      <div
+      <aside
         className={`fixed right-0 top-0 ${
           open
             ? 'bottom-0 h-full min-h-screen w-1/5 flex-col'
@@ -33,7 +33,7 @@ export const Menu: FC<MenuProps> = ({}) => {
           </button>
         </div>
         <div
-          className={`mt-6 flex h-full origin-right flex-col justify-evenly text-right ${
+          className={`mt-4 flex h-full origin-right flex-col justify-evenly text-right ${
             open ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'
           } transition-opacity delay-100 ease-in-out`}
         >
@@ -55,7 +55,7 @@ export const Menu: FC<MenuProps> = ({}) => {
             <MenuLink url="/testdrive" text="Test Drive" />
             <MenuLink url="/contacto" text="Contacto" />
           </div>
-          <div className="flex flex-col justify-start bg-gray-300/75 pr-8">
+          <div className="flex flex-col justify-start bg-gray-300/75 py-2 pr-8">
             <MenuLink url="/actividades" text="Actividades" />
             <MenuLink url="/atencion-clientes" text="Servicios al Cliente" />
             <MenuLink url="/ventas-especiales" text="Ventas Especiales" />
@@ -64,7 +64,7 @@ export const Menu: FC<MenuProps> = ({}) => {
             <MenuLink url="/about" text="Acerca de..." />
           </div>
         </div>
-      </div>
+      </aside>
     </>
   )
 }
