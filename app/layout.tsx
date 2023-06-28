@@ -1,3 +1,5 @@
+import { NavBar } from '@/components/Nav/NavBar'
+import { Menu } from '@/components/Nav/Menu'
 import './globals.css'
 import { Montserrat } from 'next/font/google'
 
@@ -15,7 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>{children}</body>
+      <body className={montserrat.className}>
+        <NavBar />
+        <Menu />
+        {children}
+      </body>
     </html>
   )
 }
