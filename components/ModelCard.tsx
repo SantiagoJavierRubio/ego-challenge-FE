@@ -8,9 +8,11 @@ interface ModelCardProps {
 export const ModelCard: FC<ModelCardProps> = ({ modelData }) => {
   return (
     <div>
-     <h6>{modelData.name}</h6>
-     <p>{modelData.year} | {modelData.price}</p>
-     <img src={modelData.thumbnail} alt={modelData.name} />
+      <h6>{modelData.name}</h6>
+      <p>
+        {modelData.year} | {modelData.price}
+      </p>
+      <img src={modelData.thumbnail} alt={modelData.name} />
     </div>
   )
 }
