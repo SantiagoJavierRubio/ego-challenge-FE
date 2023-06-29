@@ -1,5 +1,6 @@
 'use client'
 import React, { FC, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 import { HiOutlineMenu } from 'react-icons/hi'
 import { AiOutlineClose } from 'react-icons/ai'
@@ -75,8 +76,14 @@ interface MenuLinkProps {
 }
 
 const MenuLink: FC<MenuLinkProps> = ({ text, url }) => {
+  const path = usePathname()
+  const isCurrentPath = path === url
   return (
-    <p className="my-2">
+    <p
+      className={`my-2 transition-all hover:font-bold ${
+        isCurrentPath ? 'font-bold text-red-500' : 'text-inherit'
+      }`}
+    >
       <a href={url}>{text}</a>
     </p>
   )

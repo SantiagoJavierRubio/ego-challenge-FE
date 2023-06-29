@@ -1,15 +1,9 @@
-import axios from 'axios'
-
-import { Models } from '@/components/Models'
-
-export default async function Home() {
-  const { data: modelsData } = await axios.get(
-    'https://challenge.egodesign.dev/api/models/'
-  )
-
+export default function Home() {
   return (
     <main className="flex min-h-screen max-w-full flex-col items-center justify-between overflow-hidden p-24">
-      <Models models={modelsData} />
+      <h1>
+        Bienvenido a mi challenge de postulación para Desarrollador Frontend
+      </h1>
     </main>
   )
 }
