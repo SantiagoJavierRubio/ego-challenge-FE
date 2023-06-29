@@ -22,7 +22,7 @@ export const Menu: FC = () => {
         id="menu-background"
       />
       <div
-        className={`absolute inset-0 z-10 bg-gray-700 ${
+        className={`fixed inset-0 z-10 bg-gray-700 ${
           open ? 'block opacity-50' : 'hidden opacity-0'
         } backdrop-blur-md transition-opacity`}
         id="menu-backdrop"
