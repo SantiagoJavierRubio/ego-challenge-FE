@@ -1,10 +1,12 @@
 'use client'
-import React, { FC, useState, useCallback, useEffect } from 'react'
+import React, { FC, useState, useCallback } from 'react'
 import { ApiModelsResponse } from '@/lib/types/api.types'
 import { ModelCard } from './ModelCard'
 import useFilterSegments from './hooks/useFilterSegments'
 import useOrderBy from './hooks/useOrderBy'
 import { ValueOf } from 'next/dist/shared/lib/constants'
+
+import { DropDown } from '../Common/DropDown'
 
 interface modelsProps {
   models: ApiModelsResponse[]
@@ -32,10 +34,17 @@ export const Models: FC<modelsProps> = ({ models }) => {
     setSelectedModel(undefined)
   }
 
-  const handleSortSelection = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const val = e.target.value as ValueOf<typeof CRITERIA>
-    if (Object.values(CRITERIA).includes(val)) setCurrentCriteria(val)
+  const handleSortSelection = (value: ValueOf<typeof CRITERIA>) => {
+    if (Object.values(CRITERIA).includes(value)) setCurrentCriteria(value)
   }
+
+  const options = [
+    { value: CRITERIA.NONE, label: 'Ninguno' },
+    { value: CRITERIA.PRECIO_ASC, label: 'De menor a mayor precio' },
+    { value: CRITERIA.PRECIO_DESC, label: 'De mayor a menor precio' },
+    { value: CRITERIA.NUEVO, label: 'Más nuevos primero' },
+    { value: CRITERIA.VIEJO, label: 'Más viejos primero' }
+  ]
 
   return (
     <div>
@@ -54,13 +63,12 @@ export const Models: FC<modelsProps> = ({ models }) => {
         ))}
       </div>
       <div>
-        <select value={currentCriteria} onChange={handleSortSelection}>
-          <option value={CRITERIA.NONE}>Ninguno</option>
-          <option value={CRITERIA.PRECIO_ASC}>De menor a mayor precio</option>
-          <option value={CRITERIA.PRECIO_DESC}>De mayor a menor precio</option>
-          <option value={CRITERIA.NUEVO}>Más nuevos primero</option>
-          <option value={CRITERIA.VIEJO}>Más viejos primero</option>
-        </select>
+        <DropDown
+          selectedOption={currentCriteria}
+          onChange={handleSortSelection}
+          options={options}
+          title={'Ordernar por'}
+        />
       </div>
       <div className="mt-16 grid w-full grid-cols-1 gap-0 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
         {filtered.sort(sortFunction).map(model => (
