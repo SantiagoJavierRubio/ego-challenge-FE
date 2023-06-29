@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { Models } from '@/components/Models'
+import { Models } from '@/components/Models/Models'
 
 export default async function Modelos() {
   const { data: modelsData } = await axios.get(
@@ -8,7 +8,10 @@ export default async function Modelos() {
   )
 
   return (
-    <main className="flex min-h-screen max-w-full flex-col items-center justify-between overflow-hidden p-24">
+    <main className="mx-auto flex min-h-screen max-w-7xl flex-col justify-between overflow-hidden p-24">
+      <h1 className="my-6 text-left text-5xl font-bold">
+        Descubrí todos los modelos
+      </h1>
       <Models models={modelsData} />
     </main>
   )
