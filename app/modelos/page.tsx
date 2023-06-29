@@ -1,11 +1,10 @@
-import axios from 'axios'
-
 import { Models } from '@/components/Models/Models'
+import { ApiModelsResponse } from '@/lib/types/api.types'
 
 export default async function Modelos() {
-  const { data: modelsData } = await axios.get(
+  const modelsData: ApiModelsResponse[] = await fetch(
     'https://challenge.egodesign.dev/api/models/'
-  )
+  ).then(res => res.json())
 
   return (
     <main className="mx-auto flex min-h-screen max-w-7xl flex-col justify-between overflow-hidden sm:p-24">
