@@ -40,36 +40,89 @@ export const Models: FC<modelsProps> = ({ models }) => {
 
   const options = [
     { value: CRITERIA.NONE, label: 'Ninguno' },
-    { value: CRITERIA.PRECIO_ASC, label: 'De menor a mayor precio' },
-    { value: CRITERIA.PRECIO_DESC, label: 'De mayor a menor precio' },
-    { value: CRITERIA.NUEVO, label: 'Más nuevos primero' },
-    { value: CRITERIA.VIEJO, label: 'Más viejos primero' }
+    {
+      value: CRITERIA.PRECIO_ASC,
+      label: (
+        <p>
+          De <span className="font-semibold">menor</span> a{' '}
+          <span className="font-semibold">mayor</span> precio
+        </p>
+      )
+    },
+    {
+      value: CRITERIA.PRECIO_DESC,
+      label: (
+        <p>
+          De <span className="font-semibold">mayor</span> a{' '}
+          <span className="font-semibold">menor</span> precio
+        </p>
+      )
+    },
+    {
+      value: CRITERIA.NUEVO,
+      label: (
+        <p>
+          Más <span className="font-semibold">nuevos</span> primero
+        </p>
+      )
+    },
+    {
+      value: CRITERIA.VIEJO,
+      label: (
+        <p>
+          Más <span className="font-semibold">viejos</span> primero
+        </p>
+      )
+    }
   ]
 
   return (
-    <div>
-      <div className="flex items-center justify-evenly gap-4">
-        <button onClick={resetFilters} disabled={selectedSegment === undefined}>
-          Todos
-        </button>
-        {Array.from(SEGMENTS).map(segment => (
+    <section className="my-6">
+      <div className="flex items-center justify-between pb-4">
+        <div className="hidden items-center justify-evenly gap-4 md:flex lg:gap-8">
+          <h6 className="whitespace-nowrap font-semibold lg:mr-2">
+            Filtrar por
+          </h6>
           <button
-            key={segment}
-            onClick={() => filterBySegment(segment)}
-            disabled={segment === selectedSegment}
+            onClick={resetFilters}
+            disabled={!selectedSegment}
+            className="rounded-2xl p-1 px-4 disabled:bg-gray-100"
           >
-            {segment}
+            Todos
           </button>
-        ))}
-      </div>
-      <div>
+          {Array.from(SEGMENTS).map(segment => (
+            <button
+              key={segment}
+              onClick={() => filterBySegment(segment)}
+              disabled={segment === selectedSegment}
+              className="rounded-2xl p-1 px-4 disabled:bg-gray-100"
+            >
+              {segment}
+            </button>
+          ))}
+        </div>
         <DropDown
+          key="sort-dropdown"
+          selectedOption={selectedSegment}
+          handleChange={filterBySegment}
+          options={[
+            { value: undefined, label: 'Todos' },
+            ...Array.from(SEGMENTS).map(segment => ({ value: segment }))
+          ]}
+          title="Filtrar por"
+          expandLeft={false}
+          className="ml-4 md:hidden"
+        />
+        <DropDown
+          key="order-by-dropdown"
           selectedOption={currentCriteria}
-          onChange={handleSortSelection}
+          handleChange={handleSortSelection}
           options={options}
           title={'Ordernar por'}
+          className="mr-4 md:m-0"
         />
       </div>
+      <hr />
       <div className="mt-16 grid w-full grid-cols-1 gap-0 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
         {filtered.sort(sortFunction).map(model => (
           <ModelCard
@@ -80,6 +133,6 @@ export const Models: FC<modelsProps> = ({ models }) => {
           />
         ))}
       </div>
-    </div>
+    </section>
   )
 }

@@ -1,19 +1,24 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState, HTMLAttributes } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 import { BiChevronUp } from 'react-icons/bi'
 
-interface DropDownProps {
+interface DropDownProps extends HTMLAttributes<HTMLDivElement> {
   title?: string
   selectedOption: any
-  options: { value: any; label?: string }[]
-  onChange: (value: any) => void
+  options: { value: any; label?: any }[]
+  handleChange: (value: any) => void
+  expandLeft?: boolean
 }
 
 export const DropDown: FC<DropDownProps> = ({
   title = '',
   selectedOption,
   options,
-  onChange
+  handleChange,
+  expandLeft = true,
+  className,
+  ...props
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const toggleOpen = () => {
@@ -21,28 +26,32 @@ export const DropDown: FC<DropDownProps> = ({
   }
 
   const handleSelection = (value: any) => {
-    onChange(value)
+    if (value !== selectedOption) handleChange(value)
     setIsOpen(false)
   }
+
+  const style = twMerge('relative flex w-fit items-center', className)
   return (
-    <div className="relative flex w-fit items-center">
-      {title}
-      <button onClick={toggleOpen}>
+    <div className={style} {...props}>
+      <button onClick={toggleOpen} className="flex items-center">
+        <h6 className="font-semibold">{title}</h6>
         <BiChevronUp
           className={`${isOpen ? 'rotate-0' : 'rotate-180'} transition-all`}
         />
       </button>
       <div
-        className={`absolute right-0 top-full flex w-fit origin-top flex-col rounded-sm bg-white text-left shadow-black drop-shadow-lg transition-all ${
+        className={`absolute ${
+          expandLeft ? 'right-0' : 'left-0'
+        } top-full flex w-fit origin-top flex-col rounded-sm bg-white text-left shadow-black drop-shadow-lg transition-all ${
           isOpen ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0'
         }`}
       >
         {isOpen &&
           options.map((opt, index) => (
-            <div
+            <button
               key={opt.value}
               onClick={() => handleSelection(opt.value)}
-              className={`w-full whitespace-nowrap p-4 text-sm ${
+              className={`w-full whitespace-nowrap p-4 text-left text-sm ${
                 index !== 0 ? 'border-gray border-t-2' : 'border-none'
               }
                 ${
@@ -52,7 +61,7 @@ export const DropDown: FC<DropDownProps> = ({
                 }`}
             >
               {opt.label || opt.value}
-            </div>
+            </button>
           ))}
       </div>
     </div>

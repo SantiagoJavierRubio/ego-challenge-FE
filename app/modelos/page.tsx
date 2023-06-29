@@ -8,7 +8,7 @@ export default async function Modelos() {
   )
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-7xl flex-col justify-between overflow-hidden p-24">
+    <main className="mx-auto flex min-h-screen max-w-7xl flex-col justify-between overflow-hidden sm:p-24">
       <h1 className="my-6 text-left text-5xl font-bold">
         Descubrí todos los modelos
       </h1>
