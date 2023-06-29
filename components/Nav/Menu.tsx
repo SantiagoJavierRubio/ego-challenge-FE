@@ -1,17 +1,18 @@
 'use client'
-import React, { FC, useState } from 'react'
+import React, { FC, useState, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 
 import { HiOutlineMenu } from 'react-icons/hi'
 import { AiOutlineClose } from 'react-icons/ai'
+import useClickOutside from '@/lib/hooks/useClickOutside'
 
-interface MenuProps {}
-
-export const Menu: FC<MenuProps> = ({}) => {
+export const Menu: FC = () => {
   const [open, setOpen] = useState<boolean>(false)
+  const ref = useRef(null)
   const toggleMenu = () => {
     setOpen(prev => !prev)
   }
+  useClickOutside(ref, () => setOpen(false))
   return (
     <>
       <div
@@ -32,6 +33,8 @@ export const Menu: FC<MenuProps> = ({}) => {
             ? 'bottom-0 h-full w-1/5 min-w-[350px] flex-col'
             : 'bottom-full flex-row'
         }`}
+        id="menu"
+        ref={ref}
       >
         <div
           className={`flex ${

@@ -1,5 +1,7 @@
-import React, { FC, useState, HTMLAttributes } from 'react'
+import React, { FC, useState, HTMLAttributes, useRef } from 'react'
 import { twMerge } from 'tailwind-merge'
+
+import useClickOutside from '@/lib/hooks/useClickOutside'
 
 import { BiChevronUp } from 'react-icons/bi'
 
@@ -21,6 +23,8 @@ export const DropDown: FC<DropDownProps> = ({
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const ref = useRef(null)
+  useClickOutside(ref, () => setIsOpen(false))
   const toggleOpen = () => {
     setIsOpen(curr => !curr)
   }
@@ -32,7 +36,7 @@ export const DropDown: FC<DropDownProps> = ({
 
   const style = twMerge('relative flex w-fit items-center', className)
   return (
-    <div className={style} {...props}>
+    <div className={style} {...props} ref={ref}>
       <button onClick={toggleOpen} className="flex items-center">
         <h6 className="font-semibold">{title}</h6>
         <BiChevronUp
