@@ -22,7 +22,7 @@ export type ApiModelDetailsResponse = {
     {
       name: string
       description: string
-      photo: string
+      image: string
     }
   ]
   model_highlights: [
