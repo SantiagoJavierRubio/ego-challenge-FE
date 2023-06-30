@@ -48,24 +48,24 @@ export const Menu: FC = () => {
           </button>
         </div>
         <div
-          className={`flex min-h-full origin-right flex-col justify-evenly gap-2 text-right text-lg ${
+          className={`flex min-h-full origin-right flex-col justify-evenly gap-1 pt-4 text-right text-lg ${
             open ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'
           } transition-opacity delay-100 ease-in-out`}
         >
-          <div className="flex flex-col justify-start gap-2 pr-8">
+          <div className="flex flex-col justify-start gap-1 pr-8">
             <MenuLink url="/modelos" text="Modelos" />
             <MenuLink url="/servicios" text="Servicios y Accesorios" />
             <MenuLink url="/financiacion" text="Financiación" />
             <MenuLink url="/reviews" text="Reviews y Comunidad" />
           </div>
           <hr className="w-5/6 self-center" />
-          <div className="flex flex-col justify-start gap-2 pr-8">
+          <div className="flex flex-col justify-start gap-1 pr-8">
             <MenuLink url="/mobility" text="Toyota Mobility Service" />
             <MenuLink url="/gazoo" text="Toyota Gazoo Racing" />
             <MenuLink url="/hibridos" text="Toyota Híbridos" />
           </div>
           <hr className="w-5/6 self-center" />
-          <div className="flex flex-col justify-start gap-2 pr-8">
+          <div className="flex flex-col justify-start gap-1 pr-8">
             <MenuLink url="/concesionarios" text="Concesionarios" />
             <MenuLink url="/testdrive" text="Test Drive" />
             <MenuLink url="/contacto" text="Contacto" />
