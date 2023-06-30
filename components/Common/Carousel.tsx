@@ -1,10 +1,12 @@
 'use client'
-import React, { FC, useState, PropsWithChildren } from 'react'
+import React, { FC, useState, PropsWithChildren, TouchEvent } from 'react'
 import { BiChevronLeft } from 'react-icons/bi'
 
 interface CarouselProps extends PropsWithChildren {
   items: React.ReactNode[]
 }
+
+const TOUCH_SCREEN_SLIDE_TOLERANCE = 35
 
 function getModProximal(
   reference: number,
@@ -18,12 +20,27 @@ function getModProximal(
 
 export const Carousel: FC<CarouselProps> = ({ items }) => {
   const [page, setPage] = useState(0)
+  const [touchStart, setTouchStart] = useState<number | null>(null)
 
   const goNext = () => {
     setPage(prev => getModProximal(prev, 1, items.length))
   }
   const goPrev = () => {
     setPage(prev => getModProximal(prev, -1, items.length))
+  }
+
+  const handleTouchStart = (e: TouchEvent) => {
+    setTouchStart(e.touches[0].screenX)
+  }
+
+  const handleTouchEnd = (e: TouchEvent) => {
+    if (touchStart !== null) {
+      const dif = touchStart - e.changedTouches[0].screenX
+      if (dif < 0 && dif < TOUCH_SCREEN_SLIDE_TOLERANCE * -1) {
+        goPrev()
+      } else if (dif > TOUCH_SCREEN_SLIDE_TOLERANCE) goNext()
+      setTouchStart(null)
+    }
   }
 
   return (
@@ -38,22 +55,48 @@ export const Carousel: FC<CarouselProps> = ({ items }) => {
         <div
           id="carousel-content-wrapper"
           className="flex h-full w-full flex-nowrap overflow-hidden"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           <div
             id="carousel-content"
             className={`flex w-full gap-8 md:-ml-10 lg:-ml-16`}
           >
-            <div className="hidden shrink-0 grow md:block md:w-1/3 lg:w-1/4">
+            <div
+              key={`prev-at-${page - 1}`}
+              className="relative hidden shrink-0 grow md:block md:w-1/4 md:opacity-20 lg:w-1/5 xl:w-1/6"
+            >
               {items[getModProximal(page, -1, items.length)]}
             </div>
-            <div className="w-[90%] shrink-0 grow md:w-1/3 lg:w-1/4">
+            <div
+              key={`main-at-${page}`}
+              className="w-[90%] shrink-0 grow animate-appear md:w-1/4 lg:w-1/5 xl:w-1/6"
+            >
               {items[page]}
             </div>
-            <div className="w-[90%] shrink-0 grow -translate-x-4 sm:translate-x-0 md:w-1/3 lg:w-1/4">
+            <div
+              key={`second-at-${page + 1}`}
+              className="w-[90%] shrink-0 grow -translate-x-4 animate-appear sm:translate-x-0 md:w-1/4 lg:w-1/5 xl:w-1/6"
+            >
               {items[getModProximal(page, 1, items.length)]}
             </div>
-            <div className="shrink-0 grow lg:w-1/4">
+            <div
+              key={`third-at-${page + 2}`}
+              className="shrink-0 grow -translate-x-4 animate-appear sm:translate-x-0 md:w-1/4 md:animate-none md:opacity-20 lg:w-1/5 lg:animate-appear lg:opacity-100 xl:w-1/6"
+            >
               {items[getModProximal(page + 1, 1, items.length)]}
+            </div>
+            <div
+              key={`fourth-at-${page + 3}`}
+              className="xl:animtate-appear shrink-0 grow -translate-x-4 animate-appear sm:translate-x-0 md:w-1/4 lg:w-1/5 lg:animate-none lg:opacity-20 xl:w-1/6 xl:opacity-100"
+            >
+              {items[getModProximal(page + 2, 1, items.length)]}
+            </div>
+            <div
+              key={`next-at-${page + 4}`}
+              className="shrink-0 grow lg:w-1/5 xl:w-1/6 xl:opacity-20"
+            >
+              {items[getModProximal(page + 3, 1, items.length)]}
             </div>
           </div>
         </div>

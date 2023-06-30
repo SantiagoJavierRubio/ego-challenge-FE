@@ -9,7 +9,10 @@ interface FeatureCardProps {
 export const FeatureCard: FC<FeatureCardProps> = ({ feature }) => {
   return (
     <div>
-      <img className="aspect-video w-full select-none" src={feature.image} />
+      <img
+        className="aspect-video w-full select-none rounded-md"
+        src={feature.image}
+      />
       <h6>{feature.name}</h6>
       <div>{parse(feature.description)}</div>s
     </div>
