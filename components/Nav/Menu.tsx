@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { HiOutlineMenu } from 'react-icons/hi'
 import { AiOutlineClose } from 'react-icons/ai'
 import useClickOutside from '@/lib/hooks/useClickOutside'
+import Link from 'next/link'
 
 export const Menu: FC = () => {
   const [open, setOpen] = useState<boolean>(false)
@@ -93,11 +94,11 @@ const MenuLink: FC<MenuLinkProps> = ({ text, url }) => {
   const isCurrentPath = path === url
   return (
     <p
-      className={`transition-all hover:font-bold ${
+      className={`transition-all hover:font-bold active:font-semibold ${
         isCurrentPath ? 'font-bold text-red-500' : 'text-inherit'
       }`}
     >
-      <a href={url}>{text}</a>
+      <Link href={url}>{text}</Link>
     </p>
   )
 }

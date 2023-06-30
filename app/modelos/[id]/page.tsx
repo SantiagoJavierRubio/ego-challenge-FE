@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation'
 import { ApiModelDetailsResponse } from '@/lib/types/api.types'
 
 interface PageParams {
@@ -8,6 +9,8 @@ export default async function Ficha({ params }: PageParams) {
   const modelData: ApiModelDetailsResponse = await fetch(
     `https://challenge.egodesign.dev/api/models/${params.id}`
   ).then(res => res.json())
+
+  if (!modelData.id) notFound()
 
   return (
     <main className="mx-auto flex min-h-screen max-w-7xl flex-col justify-between overflow-hidden sm:p-24">

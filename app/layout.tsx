@@ -21,6 +21,7 @@ export default function RootLayout({
         <NavBar />
         <Menu />
         {children}
+        <footer className="h-10 w-full bg-black" />
       </body>
     </html>
   )

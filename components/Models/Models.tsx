@@ -123,7 +123,7 @@ export const Models: FC<modelsProps> = ({ models }) => {
         />
       </div>
       <hr />
-      <div className="mt-16 grid w-full grid-cols-1 gap-0 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid w-full grid-cols-1 gap-0 sm:mt-12 sm:grid-cols-2 sm:gap-6 sm:gap-y-12 md:grid-cols-3 lg:grid-cols-4">
         {filtered.sort(sortFunction).map(model => (
           <ModelCard
             key={model.id}

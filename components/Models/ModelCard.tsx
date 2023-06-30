@@ -1,4 +1,5 @@
 import { ApiModelsResponse } from '@/lib/types/api.types'
+import Link from 'next/link'
 import React, { FC } from 'react'
 
 interface ModelCardProps {
@@ -18,7 +19,7 @@ export const ModelCard: FC<ModelCardProps> = ({
   }
   return (
     <div
-      className="flex aspect-square h-full w-full cursor-pointer flex-col items-center justify-start text-center"
+      className="mb-2 flex h-full w-full cursor-pointer flex-col items-center justify-start text-center"
       onClick={handleSelect}
     >
       <h6
@@ -32,18 +33,18 @@ export const ModelCard: FC<ModelCardProps> = ({
         {modelData.year} <span className="px-1">|</span> $
         {modelData.price.toLocaleString()}
       </p>
-      <div className="flex w-full grow flex-col items-center justify-center">
+      <div className="flex w-full grow flex-col items-center justify-center sm:-mt-6">
         <img src={modelData.thumbnail} alt={modelData.name} width="300px" />
       </div>
-      <a href={`/modelos/${modelData.id}`}>
+      <Link href={`/modelos/${modelData.id}`}>
         <div
-          className={`rounded-xl bg-black px-6 py-2 text-white ${
+          className={`rounded-xl bg-black px-6 py-2 text-white hover:bg-black/75 active:bg-black/50 sm:-mt-2 lg:-mt-6 ${
             isSelected ? 'visible' : 'invisible'
           }`}
         >
           Ver Modelo
         </div>
-      </a>
+      </Link>
     </div>
   )
 }
