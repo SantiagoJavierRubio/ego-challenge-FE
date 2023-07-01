@@ -126,7 +126,7 @@ interface MenuLinkProps {
 
 const MenuLink: FC<MenuLinkProps> = ({ text, url, close }) => {
   const path = usePathname()
-  const isCurrentPath = path === url
+  const isCurrentPath = path.includes(url)
   return (
     <p
       className={`transition-all hover:font-bold active:font-semibold ${

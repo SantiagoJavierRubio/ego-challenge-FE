@@ -79,14 +79,14 @@ export const Models: FC<modelsProps> = ({ models }) => {
   return (
     <section className="my-8 sm:my-12">
       <div className="flex items-center justify-between pb-4">
-        <div className="hidden items-center justify-evenly gap-4 md:flex lg:gap-8">
-          <h6 className="whitespace-nowrap font-semibold lg:mr-2">
+        <div className="hidden items-center justify-evenly gap-2 md:flex lg:gap-4">
+          <h6 className="whitespace-nowrap text-sm font-semibold lg:mr-2">
             Filtrar por
           </h6>
           <button
             onClick={resetFilters}
             disabled={!selectedSegment}
-            className="rounded-2xl p-1 px-4 disabled:bg-gray-100"
+            className="rounded-2xl p-1 px-4 text-sm disabled:bg-gray-100"
           >
             Todos
           </button>
@@ -95,7 +95,7 @@ export const Models: FC<modelsProps> = ({ models }) => {
               key={segment}
               onClick={() => filterBySegment(segment)}
               disabled={segment === selectedSegment}
-              className="rounded-2xl p-1 px-4 disabled:bg-gray-100"
+              className="rounded-2xl p-1 px-4 text-sm disabled:bg-gray-100"
             >
               {segment}
             </button>

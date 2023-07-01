@@ -7,7 +7,7 @@ export default async function Modelos() {
   ).then(res => res.json())
 
   return (
-    <main className="mx-auto my-20 flex min-h-screen max-w-7xl flex-col justify-start overflow-hidden p-2 sm:my-12 sm:p-24">
+    <main className="mx-auto my-20 flex min-h-screen max-w-7xl flex-col justify-start overflow-hidden p-2 sm:my-12 sm:p-6 lg:p-24">
       <h1 className="text-left text-4xl font-bold sm:text-5xl">
         Descubrí todos los modelos
       </h1>

@@ -38,7 +38,7 @@ export const DropDown: FC<DropDownProps> = ({
   return (
     <div className={style} {...props} ref={ref}>
       <button onClick={toggleOpen} className="flex items-center">
-        <h6 className="font-semibold">{title}</h6>
+        <h6 className="text-sm font-semibold">{title}</h6>
         <BiChevronUp
           className={`${isOpen ? 'rotate-0' : 'rotate-180'} transition-all`}
         />

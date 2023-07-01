@@ -16,14 +16,14 @@ export default async function Ficha({ params }: PageParams) {
   if (!modelData.id) notFound()
 
   return (
-    <main className="mx-auto my-28 flex min-h-screen flex-col justify-between gap-12 overflow-hidden">
-      <section className="mt-6 grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:px-12">
+    <main className="mx-auto my-16 flex min-h-screen flex-col justify-between gap-4 overflow-hidden sm:my-28 sm:gap-12">
+      <section className="grid w-full grid-cols-1 sm:mt-6 sm:grid-cols-2 sm:gap-2 lg:px-12">
         <img
           src={modelData.photo}
           alt="automóvil de costado"
-          className="w-full"
+          className="m-auto w-4/5 sm:w-full"
         />
-        <div className="flex flex-col items-start justify-center gap-4 pl-12">
+        <div className="flex flex-col items-start justify-center gap-2 pl-12 sm:gap-4">
           <h1 className="my-0 py-0 text-left text-xl font-semibold">
             {modelData.name}
           </h1>
@@ -53,7 +53,7 @@ export default async function Ficha({ params }: PageParams) {
               <img
                 src={highlight.image}
                 alt={'ilustración de feature'}
-                className={`rounded-md sm:max-w-[50%] ${
+                className={`w-full rounded-md sm:w-auto sm:max-w-[50%] ${
                   !isOnLeft ? 'sm:hidden' : ''
                 }`}
               />
@@ -61,7 +61,7 @@ export default async function Ficha({ params }: PageParams) {
                 <h5 className="my-6 text-xl font-semibold">
                   {highlight.title}
                 </h5>
-                <div>{parse(highlight.content)}</div>
+                <div className="leading-7">{parse(highlight.content)}</div>
               </div>
               <img
                 src={highlight.image}
