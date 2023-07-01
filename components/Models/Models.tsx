@@ -77,7 +77,7 @@ export const Models: FC<modelsProps> = ({ models }) => {
   ]
 
   return (
-    <section className="my-6">
+    <section className="my-8 sm:my-12">
       <div className="flex items-center justify-between pb-4">
         <div className="hidden items-center justify-evenly gap-4 md:flex lg:gap-8">
           <h6 className="whitespace-nowrap font-semibold lg:mr-2">
@@ -123,7 +123,7 @@ export const Models: FC<modelsProps> = ({ models }) => {
         />
       </div>
       <hr />
-      <div className="grid w-full grid-cols-1 gap-0 sm:mt-12 sm:grid-cols-2 sm:gap-6 sm:gap-y-12 md:grid-cols-3 lg:grid-cols-4">
+      <div className="mt-4 grid w-full grid-cols-1 gap-y-8 sm:mt-12 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
         {filtered.sort(sortFunction).map(model => (
           <ModelCard
             key={model.id}

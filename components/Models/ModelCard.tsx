@@ -23,7 +23,7 @@ export const ModelCard: FC<ModelCardProps> = ({
       onClick={handleSelect}
     >
       <h6
-        className={`mb-2 truncate text-2xl font-semibold ${
+        className={`truncate text-2xl font-semibold sm:mb-2 ${
           isSelected ? 'text-red-500' : 'text-inherit'
         } transition-all`}
       >
@@ -33,12 +33,12 @@ export const ModelCard: FC<ModelCardProps> = ({
         {modelData.year} <span className="px-1">|</span> $
         {modelData.price.toLocaleString()}
       </p>
-      <div className="flex w-full grow flex-col items-center justify-center sm:-mt-6">
+      <div className="flex h-48 w-full flex-col items-center justify-center">
         <img src={modelData.thumbnail} alt={modelData.name} width="300px" />
       </div>
       <Link href={`/modelos/${modelData.id}`}>
         <div
-          className={`rounded-xl bg-black px-6 py-2 text-white hover:bg-black/75 active:bg-black/50 sm:-mt-2 lg:-mt-6 ${
+          className={`-mt-4 rounded-xl bg-black px-6 py-2 text-white hover:bg-black/75 active:bg-black/50 ${
             isSelected ? 'visible' : 'invisible'
           }`}
         >
