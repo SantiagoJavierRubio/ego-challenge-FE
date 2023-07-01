@@ -79,8 +79,8 @@ export const Models: FC<modelsProps> = ({ models }) => {
   return (
     <section className="my-8 sm:my-12">
       <div className="flex items-center justify-between pb-4">
-        <div className="hidden items-center justify-evenly gap-2 md:flex lg:gap-4">
-          <h6 className="whitespace-nowrap text-sm font-semibold lg:mr-2">
+        <div className="hidden items-center justify-evenly gap-2 md:flex md:gap-0">
+          <h6 className="whitespace-nowrap text-sm font-semibold md:mr-2">
             Filtrar por
           </h6>
           <button

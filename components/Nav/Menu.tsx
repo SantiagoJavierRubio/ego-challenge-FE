@@ -27,12 +27,9 @@ export const Menu: FC = () => {
         id="menu"
         ref={ref}
       >
-        <div
-          onClick={toggleMenu}
-          className={`z-50 flex cursor-pointer items-center justify-end gap-2 p-3 transition-all`}
-        >
+        <div className="z-50 flex items-center justify-end gap-2 p-3 transition-all">
           <p className="hidden sm:block">{open ? 'Cerrar' : 'Menu'}</p>
-          <div>
+          <div onClick={toggleMenu} className="cursor-pointer">
             <AiOutlineClose
               className={`text-2xl ${open ? 'block' : 'hidden'}`}
             />

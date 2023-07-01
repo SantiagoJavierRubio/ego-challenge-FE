@@ -16,21 +16,21 @@ export default async function Ficha({ params }: PageParams) {
   if (!modelData.id) notFound()
 
   return (
-    <main className="mx-auto my-16 flex min-h-screen flex-col justify-between gap-4 overflow-hidden sm:my-28 sm:gap-12">
+    <main className="mx-auto my-12 flex min-h-screen flex-col justify-between gap-4 overflow-hidden sm:gap-12">
       <section className="grid w-full grid-cols-1 sm:mt-6 sm:grid-cols-2 sm:gap-2 lg:px-12">
         <img
           src={modelData.photo}
           alt="automóvil de costado"
-          className="m-auto w-4/5 sm:w-full"
+          className="m-auto w-4/5 sm:w-11/12 md:w-full"
         />
-        <div className="flex flex-col items-start justify-center gap-2 pl-12 sm:gap-4">
+        <div className="flex flex-col items-start justify-center gap-1 pl-12 lg:gap-4">
           <h1 className="my-0 py-0 text-left text-xl font-semibold">
             {modelData.name}
           </h1>
-          <h2 className="my-0 text-left text-5xl font-semibold">
+          <h2 className="my-0 text-left text-4xl font-semibold lg:text-5xl">
             {modelData.title}
           </h2>
-          <div className="my-6">{parse(modelData.description)}</div>
+          <div className="my-6 leading-7">{parse(modelData.description)}</div>
         </div>
       </section>
       <section>
