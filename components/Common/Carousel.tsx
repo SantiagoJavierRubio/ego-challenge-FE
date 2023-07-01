@@ -44,7 +44,10 @@ export const Carousel: FC<CarouselProps> = ({ items }) => {
   }
 
   return (
-    <div id="carousel-container" className="flex w-full flex-col">
+    <div
+      id="carousel-container"
+      className="flex w-full flex-col bg-gray-100 pt-8"
+    >
       <div id="carousel-wrapper" className="relative flex w-full">
         <div
           className="absolute left-0 top-8 z-10 hidden h-16 cursor-pointer items-center bg-gray-200/75 transition-all hover:bg-gray-300/90 md:flex"
@@ -60,11 +63,11 @@ export const Carousel: FC<CarouselProps> = ({ items }) => {
         >
           <div
             id="carousel-content"
-            className={`flex w-full gap-8 md:-ml-10 lg:-ml-16`}
+            className={`flex w-full gap-6 md:-ml-10 md:h-64 lg:-ml-16`}
           >
             <div
               key={`prev-at-${page - 1}`}
-              className="relative hidden shrink-0 grow md:block md:w-1/4 md:opacity-20 lg:w-1/5 xl:w-1/6"
+              className="relative hidden h-full shrink-0 grow md:block md:w-1/4 md:opacity-20 lg:w-1/5 xl:w-1/6"
             >
               {items[getModProximal(page, -1, items.length)]}
             </div>
@@ -106,6 +109,17 @@ export const Carousel: FC<CarouselProps> = ({ items }) => {
         >
           <BiChevronLeft size={28} />
         </div>
+      </div>
+      <div className="mx-auto my-8 flex items-center">
+        {items.map((_, index) => (
+          <div key={`indicator-${index}`} className="flex w-10 justify-center">
+            <div
+              className={`aspect-square h-2 ${
+                page === index ? 'w-8 bg-gray-400' : 'w-2 bg-gray-300'
+              } origin-center rounded-full transition-all`}
+            />
+          </div>
+        ))}
       </div>
     </div>
   )

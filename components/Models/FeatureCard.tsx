@@ -11,10 +11,15 @@ export const FeatureCard: FC<FeatureCardProps> = ({ feature }) => {
     <div>
       <img
         className="aspect-video w-full select-none rounded-md"
+        alt="ilustración de feature"
         src={feature.image}
       />
-      <h6>{feature.name}</h6>
-      <div>{parse(feature.description)}</div>s
+      <h6 className="my-2 ml-2 text-ellipsis text-sm font-semibold sm:ml-0">
+        {feature.name}
+      </h6>
+      <div className="w-ful ml-2 text-ellipsis text-sm sm:ml-0">
+        {parse(feature.description)}
+      </div>
     </div>
   )
 }

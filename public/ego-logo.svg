@@ -3,6 +3,6 @@ viewBox="0 0 500 500">
   <g id="ego">
     <circle style="fill:#12110F;stroke:#12110F;stroke-width:1.6871;stroke-miterlimit:10;" cx="250" cy="250" r="245">
     </circle>
-    <text x="50%" y="50%" text-anchor="middle" stroke="#ffffff" fill="#ffffff" stroke-width="6px" dy=".3em" font-size="185px" font-weight="900" font-family="Roboto, sans-serif">EGO</text>
+    <text x="50%" y="40%" text-anchor="middle" stroke="#ffffff" fill="#ffffff" stroke-width="6px" dy=".3em" font-size="185px" transform="scale(1, 1.3)" font-weight="900" font-family="Roboto, sans-serif">EGO</text>
   </g>
 </svg>
