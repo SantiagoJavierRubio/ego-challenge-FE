@@ -91,7 +91,7 @@ export const Carousel: FC<CarouselProps> = ({ items }) => {
             </div>
             <div
               key={`fourth-at-${page + 3}`}
-              className="xl:animtate-appear shrink-0 grow -translate-x-4 animate-appear sm:translate-x-0 md:w-1/4 lg:w-1/5 lg:animate-none lg:opacity-20 xl:w-1/6 xl:opacity-100"
+              className="shrink-0 grow -translate-x-4 animate-appear sm:translate-x-0 md:w-1/4 lg:w-1/5 lg:animate-none lg:opacity-20 xl:w-1/6 xl:animate-appear xl:opacity-100"
             >
               {items[getModProximal(page + 2, 1, items.length)]}
             </div>
