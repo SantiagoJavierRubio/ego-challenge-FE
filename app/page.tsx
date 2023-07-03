@@ -1,3 +1,9 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Home'
+}
+
 export default function Home() {
   return (
     <main className="mt-32 flex min-h-screen max-w-full flex-col items-center justify-start gap-4 overflow-hidden lg:p-24">

@@ -1,5 +1,11 @@
+import { Metadata } from 'next'
+
 import { Models } from '@/components/Models/Models'
 import { ApiModelsResponse } from '@/lib/types/api.types'
+
+export const metadata: Metadata = {
+  title: 'Modelos'
+}
 
 export default async function Modelos() {
   const modelsData: ApiModelsResponse[] = await fetch(

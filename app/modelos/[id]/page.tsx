@@ -4,8 +4,21 @@ import parse from 'html-react-parser'
 import { Carousel } from '@/components/Common/Carousel'
 import { FeatureCard } from '@/components/Models/FeatureCard'
 
+import { Metadata } from 'next'
+
 interface PageParams {
   params: { id: number }
+}
+
+export async function generateMetadata({
+  params
+}: PageParams): Promise<Metadata> {
+  const modelData: ApiModelDetailsResponse = await fetch(
+    `https://challenge.egodesign.dev/api/models/${params.id}`
+  ).then(res => res.json())
+  return {
+    title: `Ficha técnica ${modelData.name}`
+  }
 }
 
 export default async function Ficha({ params }: PageParams) {
